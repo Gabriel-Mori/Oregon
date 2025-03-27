@@ -7,6 +7,7 @@ const Home = async () => {
   if (!userId) {
     redirect("/login");
   }
+
   return (
     <div className="h-ful flex items-center justify-center">
       <UserButton showName />
