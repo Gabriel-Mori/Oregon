@@ -20,12 +20,11 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
     redirect("/login");
   }
   const monthIsInvalid = !month || !isMatch(month, "MM");
-  console.log("monthIsInvalid: ", monthIsInvalid);
+
   if (monthIsInvalid) {
     redirect(`?month=${new Date().getMonth() + 1}`);
   }
   const dashboard = await getDashboard(month);
-  console.log("dashboard: ", dashboard);
   const userCanAddTransaction = await canUserAddTransaction();
   // const user = await clerkClient().users.getUser(userId);
   return (
