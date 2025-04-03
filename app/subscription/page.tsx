@@ -1,11 +1,12 @@
+"use server";
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import Navbar from "../_components/navbar";
-import { redirect } from "next/navigation";
-import { Card, CardContent, CardHeader } from "../_components/ui/card";
 import { CheckIcon, XIcon } from "lucide-react";
-import AcquirePlanButton from "./_components/acquire-plan-button";
+import { redirect } from "next/navigation";
+import Navbar from "../_components/navbar";
 import { Badge } from "../_components/ui/badge";
+import { Card, CardContent, CardHeader } from "../_components/ui/card";
 import { getCurrentMonthTransactions } from "../_data/get-current-month-transactions";
+import AcquirePlanButton from "./_components/acquire-plan-button";
 
 const SubscriptionPage = async () => {
   const { userId } = await auth();
