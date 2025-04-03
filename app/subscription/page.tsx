@@ -13,9 +13,14 @@ const SubscriptionPage = async () => {
   if (!userId) {
     redirect("/login");
   }
-  const user = await clerkClient().users.getUser(userId);
+  let user;
+  try {
+    user = await clerkClient().users.getUser(userId);
+  } catch (error) {
+    console.error("Erro ao buscar usuário:", error);
+  }
   const currentMonthTransactions = await getCurrentMonthTransactions();
-  const hasPremiumPlan = user.publicMetadata.subscriptionPlan == "premium";
+  const hasPremiumPlan = user?.publicMetadata.subscriptionPlan == "premium";
   return (
     <>
       <Navbar />
