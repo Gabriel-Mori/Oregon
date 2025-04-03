@@ -18,7 +18,7 @@ const SummaryCard = ({
   userCanAddTransaction,
 }: SummaryCardProps) => {
   return (
-    <Card>
+    <Card className="bg-white bg-opacity-10">
       <CardHeader className="flex-row items-center gap-4">
         {icon}
         <p
