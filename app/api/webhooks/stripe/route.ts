@@ -24,24 +24,20 @@ export const POST = async (request: Request) => {
     switch (event.type) {
       case "invoice.paid": {
         const invoice = event.data.object;
-        console.log("invoice: ", invoice);
 
         const customer = invoice.customer;
         let subscriptionId = invoice.subscription;
 
         if (!subscriptionId) {
-          console.log(
-            "Subscription ID is null. Trying to fetch using customer ID...",
-          );
           if (!customer || typeof customer !== "string") {
             console.error("Invalid customer ID:", customer);
             return new NextResponse("Invalid customer ID", { status: 400 });
           }
-          // Buscar a assinatura com o customer ID
+
           const subscriptions = await stripe.subscriptions.list({
             customer: customer,
             status: "active",
-            limit: 1, // Pegamos apenas a assinatura mais recente
+            limit: 1,
           });
 
           if (subscriptions.data.length > 0) {
@@ -54,11 +50,9 @@ export const POST = async (request: Request) => {
           }
         }
 
-        // Buscar detalhes da assinatura
         const subscriptionData = await stripe.subscriptions.retrieve(
           subscriptionId as string,
         );
-        console.log("subscriptionData: ", subscriptionData);
 
         const clerkUserId = subscriptionData.metadata?.clerk_user_id;
         if (!clerkUserId) {
