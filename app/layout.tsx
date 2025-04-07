@@ -10,7 +10,7 @@ const mulish = Mulish({
 
 export const metadata = {
   title: "Finance.ai",
-  description: "Gestão financeira que utiliza IA",
+  description: "Gestor financeiro simples e eficiente",
   icons: [{ rel: "icon", url: favicon.src }],
 };
 
