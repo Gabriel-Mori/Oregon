@@ -1,6 +1,6 @@
 "use server";
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { CheckIcon, XIcon } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import Navbar from "../_components/navbar";
 import { Badge } from "../_components/ui/badge";
@@ -43,12 +43,8 @@ const SubscriptionPage = async () => {
               <div className="flex items-center gap-2">
                 <CheckIcon className="text-primary" />
                 <p>
-                  Apenas 10 transações por mês ({currentMonthTransactions}/10)
+                  Apenas 5 transações por mês ({currentMonthTransactions}/5)
                 </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <XIcon />
-                <p>Relatórios de IA</p>
               </div>
             </CardContent>
           </Card>
@@ -73,10 +69,6 @@ const SubscriptionPage = async () => {
               <div className="flex items-center gap-2">
                 <CheckIcon className="text-primary" />
                 <p>Transações ilimitadas</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckIcon className="text-primary" />
-                <p>Relatórios de IA</p>
               </div>
               <AcquirePlanButton />
             </CardContent>
